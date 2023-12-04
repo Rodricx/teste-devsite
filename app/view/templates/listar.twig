@@ -1,0 +1,18 @@
+{% include 'structure/header.twig' %}
+
+
+    <div class="w-75 container m-top-10">
+        <div class="card p-5 scroll-y heig">
+            <a href="../view/cadastroNome.php" class="underline-none"><< voltar</a>
+            <h1>Listagem nomes</h1>
+                <hr style="border: 2px solid #000;">
+                <table class="table table-striped table-hover">
+                    {% for dado in dados %}
+                        <tr><td class="i-text text-align">{{loop.index}}</td><td class="td-border distance-text i-text b-text">{{dado.nome}}</td></tr>
+                    {% endfor %}
+                </table>
+                <hr style="border: 2px solid #000;">
+        </div>
+    </div>
+
+{% include 'structure/footer.twig' %}

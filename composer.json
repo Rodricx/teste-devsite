@@ -1,0 +1,13 @@
+{
+    "name": "rodrigo/teste-devsite",
+    "require": {
+        "twig/twig": "^3.8"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "App\\Classes\\" : "app/classes",
+            "App\\Database\\" : "app/database",
+            "App\\Controller\\" : "app/controller"
+        }
+    }
+}

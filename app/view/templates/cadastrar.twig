@@ -1,0 +1,58 @@
+{% include 'structure/header.twig' %}
+
+<div class="alert alert-danger container disp-none w-50 m-top-5" id="response"></div>
+
+<div class="w-50 container m-top-15" id="card-base">
+    <div class="card p-5">
+        <div class="mb-3">
+            <p class="h4">Cadastrar Nome</p>
+        </div>
+        <div class="mb-3">
+            <form class="row g-3" id="form-cad" method="POST">
+                <div class="col-8">
+                    <input type="text" name="name" class="form-control" id="fieldName" placeholder="nome...">
+                </div>
+                <div class="col-4">                    
+                    <input type="submit" value="cadastrar" class="btn btn-success form-control" id="submitBtn">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% include 'structure/footer.twig' %}
+
+<script>
+    btnSubmit = document.getElementById("form-cad");
+    field = document.getElementById("fieldName");
+    cardBase = document.getElementById("card-base");
+
+
+        btnSubmit.addEventListener("submit", async(e) => {
+            e.preventDefault();
+            
+            if(field.value === ""){
+                let response = document.getElementById("response");
+                response.innerHTML = "Necessário acrescentar um nome para enviar o formulário!";
+                response.classList.remove("disp-none");
+                cardBase.classList.remove("m-top-15");
+                cardBase.classList.add("m-top-10");
+
+                setTimeout(function(){
+                    response.classList.add("disp-none");
+                    cardBase.classList.add("m-top-15");
+                    cardBase.classList.remove("m-top-10");
+                }, 2000);
+            } else {
+                const formData = new FormData(btnSubmit);
+
+                const dados = await fetch("listarNome.php", {
+                    method: "POST",
+                    body:   formData
+                });
+                window.location.href = "../view/listarNome.php";
+            }
+        });
+    
+</script>
